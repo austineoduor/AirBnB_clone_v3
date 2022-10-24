@@ -155,7 +155,8 @@ No known bugs at this time.
 
 ## Authors
 Austineoduor - [Github](https://github.com/aaustineoduor) 
-Jennifer Huang - [Github](https://github.com/jhuang10123)
+
+Joseph Mariga - [Github](https://github.com/Mariga94)
 
 ## License
 Public Domain. No copy write protection. 
