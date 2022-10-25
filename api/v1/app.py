@@ -1,28 +1,28 @@
 #!/usr/bin/python3
 """App file"""
 from api.v1.views import app_views
-from flask import abort, Flask, jsonify, make_response
+from flask import abort, Flask, render_template, jsonify, make_response
 from flask_cors import CORS
 from models import storage
 from os import getenv
+from flasgger import Swagger
+from flasgger.utils import swag_from
 
 
+app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
 app = Flask(__name__)
 # instance of flask
 
 CORS(app, resources={r"/api/v1/*": {"origins": "*"}})
 # Initialze cross-origin
 
-host = getenv('HBNB_API_HOST', '0.0.0.0')
-port = getenv('HBNB_API_PORT', 5000)
-# Environment variables
 
 app.register_blueprint(app_views)
 # register blueprint
 
 @app.teardown_appcontext
 def teardown(exception):
-    """ calls """
+    """ Close Storage """
     storage.close()
 
 
@@ -36,6 +36,18 @@ def handle_404(error):
     response_error = {"error": "Not found"}
     return make_response(jsonify(response_error), 404)
 
+app.config['SWAGGER'] = {
+    'title': 'AirBnB clone Restful API',
+    'uiversion': 3
+}
+
+Swagger(app)
 
 if __name__ == '__main__':
+    host = environ.get('HBNB_API_HOST')
+    port = environ.get('HBNB_API_PORT')
+    if not host:
+        host = '0.0.0.0'
+    if not port:
+        port = '5000'
     app.run(host=host, port=port, threaded=True, debug=True)
