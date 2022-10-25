@@ -25,7 +25,8 @@ def states():
         return jsonify(obj.to_dict()), 201
 
 
-@app_views.route('/states/<state_id>', methods=['GET', 'DELETE', 'POST', 'PUT'])
+@app_views.route('/states/<state_id>',
+                 methods=['GET', 'DELETE', 'POST', 'PUT'])
 def states_id(state_id):
     obj = storage.get('State', state_id)
 
@@ -47,5 +48,7 @@ def states_id(state_id):
     if request.method == 'PUT':
         if not request.get_json():
             abort(400, 'Not a JSON')
-        obj.update(request.get_json())
+        body = request.get_json()
+        for key, value in body.items():
+            setattr(obj, key, value)
         return jsonify(obj.to_dict())
