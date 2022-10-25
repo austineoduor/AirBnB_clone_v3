@@ -6,19 +6,19 @@ from flask_cors import CORS
 from models import storage
 from os import getenv
 
-# instance of flask
+
 app = Flask(__name__)
+# instance of flask
 
-# Initialze cross-origin
 CORS(app, resources={r"/api/v1/*": {"origins": "*"}})
+# Initialze cross-origin
 
-# Environment variables
 host = getenv('HBNB_API_HOST', '0.0.0.0')
 port = getenv('HBNB_API_PORT', 5000)
+# Environment variables
 
-# register blueprint
 app.register_blueprint(app_views)
-
+# register blueprint
 
 @app.teardown_appcontext
 def teardown(exception):
@@ -29,7 +29,6 @@ def teardown(exception):
 @app.errorhandler(404)
 def handle_404(error):
      """ 404 Error
-    ---
     responses:
       404:
         description: a resource was not found
