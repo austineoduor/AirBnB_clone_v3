@@ -38,14 +38,14 @@ def handle_404(error):
     return make_response(jsonify(response_error), 404)
 
 
-app.config['SWAGGER'] = {
+"""app.config['SWAGGER'] = {
 
 
     'title': 'AirBnB clone Restful API',
     'uiversion': 3
 }
 
-Swagger(app)
+Swagger(app)"""
 
 if __name__ == '__main__':
     host = environ.get('HBNB_API_HOST')
@@ -54,4 +54,4 @@ if __name__ == '__main__':
         host = '0.0.0.0'
     if not port:
         port = '5000'
-    app.run(host=host, port=port, threaded=True, debug=True)
+    app.run(host=host, port=port, threaded=True)
