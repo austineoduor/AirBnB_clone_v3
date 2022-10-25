@@ -39,8 +39,7 @@ def states_id(state_id):
 
     if request.method == 'DELETE':
         try:
-            obj.delete()
-            del obj
+            storage.delete(obj)
             return jsonify({}), 200
         except Exception as e:
             return e
