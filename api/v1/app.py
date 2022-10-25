@@ -20,6 +20,7 @@ CORS(app, resources={r"/api/v1/*": {"origins": "*"}})
 app.register_blueprint(app_views)
 # register blueprint
 
+
 @app.teardown_appcontext
 def teardown(exception):
     """ Close Storage """
@@ -28,7 +29,7 @@ def teardown(exception):
 
 @app.errorhandler(404)
 def handle_404(error):
-     """ 404 Error
+    """ 404 Error
     responses:
       404:
         description: a resource was not found
