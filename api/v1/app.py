@@ -37,8 +37,9 @@ def handle_404(error):
     response_error = {"error": "Not found"}
     return make_response(jsonify(response_error), 404)
 
+
 app.config['SWAGGER'] = {
-   
+
 
     'title': 'AirBnB clone Restful API',
     'uiversion': 3
