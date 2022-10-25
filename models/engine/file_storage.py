@@ -12,6 +12,7 @@ from models.review import Review
 from models.state import State
 from models.user import User
 
+
 classes = {"Amenity": Amenity, "BaseModel": BaseModel, "City": City,
            "Place": Place, "Review": Review, "State": State, "User": User}
 
@@ -24,6 +25,7 @@ class FileStorage:
     # dictionary - empty but will store all objects by <class name>.id
     __objects = {}
 
+
     def all(self, cls=None):
         """returns the dictionary __objects"""
         if cls is not None:
@@ -34,11 +36,13 @@ class FileStorage:
             return new_dict
         return self.__objects
 
+
     def new(self, obj):
         """sets in __objects the obj with key <obj class name>.id"""
         if obj is not None:
             key = obj.__class__.__name__ + "." + obj.id
             self.__objects[key] = obj
+
 
     def save(self):
         """serializes __objects to the JSON file (path: __file_path)"""
@@ -58,6 +62,7 @@ class FileStorage:
         except:
             pass
 
+
     def delete(self, obj=None):
         """delete obj from __objects if it’s inside"""
         if obj is not None:
@@ -65,14 +70,23 @@ class FileStorage:
             if key in self.__objects:
                 del self.__objects[key]
 
+
     def get(self, cls, id):
-        """Retrieve one object"""
+        """
+        Retrieve one object
+        cls: class
+        id: string representing the object ID
+        Returns the obj based on the class and its ID, or None if not found
+        """
         objs = self.all(cls)
         obj = "{}.{}".format(cls.__name__, id)
         return objs[obj]
 
+
     def count(self, cls=None):
-        """Count the number of objects"""
+        """
+        Count the number of objects
+        """
         if cls:
             return (len(self.all(cls)))
         return (len(self.all()))
