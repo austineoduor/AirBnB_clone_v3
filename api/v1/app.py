@@ -2,11 +2,15 @@
 """App file"""
 from api.v1.views import app_views
 from flask import abort, Flask, jsonify, make_response
+from flask_cors import CORS
 from models import storage
 from os import getenv
 
 # instance of flask
 app = Flask(__name__)
+
+# Initialze cross-origin
+CORS(app, resources={r"/api/v1/*": {"origins": "*"}})
 
 # Environment variables
 host = getenv('HBNB_API_HOST', '0.0.0.0')
