@@ -9,7 +9,7 @@ from flasgger import Swagger
 from flasgger.utils import swag_from
 
 
-app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
+"""app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True"""
 app = Flask(__name__)
 # instance of flask
 
