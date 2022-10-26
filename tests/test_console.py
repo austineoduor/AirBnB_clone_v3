@@ -3,7 +3,7 @@
 
 
 import sys
-import models
+from models import models
 import unittest
 from io import StringIO
 from console import HBNBCommand
