@@ -4,7 +4,7 @@ Contains the FileStorage class
 """
 
 import json
-from models import models.storage
+from models import models
 from models.amenity import Amenity
 from models.base_model import BaseModel
 from models.city import City
