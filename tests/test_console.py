@@ -5,7 +5,7 @@ Contains the class TestConsoleDocs
 import inspect
 import pep8
 import unittest
-HBNBCommand = console.HBNBCommand
+from console import HBNBCommand
 
 
 class TestConsoleDocs(unittest.TestCase):
