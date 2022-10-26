@@ -26,7 +26,6 @@ class FileStorage:
     # dictionary - empty but will store all objects by <class name>.id
     __objects = {}
 
-
     def all(self, cls=None):
         """returns the dictionary __objects"""
         if cls is not None:
@@ -37,13 +36,11 @@ class FileStorage:
             return new_dict
         return self.__objects
 
-
     def new(self, obj):
         """sets in __objects the obj with key <obj class name>.id"""
         if obj is not None:
             key = obj.__class__.__name__ + "." + obj.id
             self.__objects[key] = obj
-
 
     def save(self):
         """serializes __objects to the JSON file (path: __file_path)"""
@@ -63,14 +60,12 @@ class FileStorage:
         except:
             pass
 
-
     def delete(self, obj=None):
         """delete obj from __objects if it’s inside"""
         if obj is not None:
             key = obj.__class__.__name__ + '.' + obj.id
             if key in self.__objects:
                 del self.__objects[key]
-
 
     def get(self, cls, id):
         """
@@ -85,7 +80,6 @@ class FileStorage:
             return all_obj.get(fetch_obj)
         return None
 
-
     def count(self, cls=None):
         """
         Count the number of objects
@@ -96,4 +90,4 @@ class FileStorage:
 
     def close(self):
         """call reload() method for deserializing the JSON file to objects"""
-        self.reload()
+        self.reload()
