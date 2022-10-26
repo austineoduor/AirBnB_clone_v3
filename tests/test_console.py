@@ -22,7 +22,7 @@ class TestConsoleDocs(unittest.TestCase):
         pep8s = pep8.StyleGuide(quiet=True)
         result = pep8s.check_files(['tests/test_console.py'])
         self.assertEqual(result.total_errors, 0,
-                         "Found code style errors (and warnings).")
+         """Found code style errors (and warnings).")"""
 
     """def test_console_module_docstring(self):
         Test for the console.py module docstring
@@ -37,4 +37,4 @@ class TestConsoleDocs(unittest.TestCase):
                          "HBNBCommand class needs a docstring")
         self.assertTrue(len(HBNBCommand.__doc__) >= 1,
                         "HBNBCommand class needs a docstring")
-       
+   
