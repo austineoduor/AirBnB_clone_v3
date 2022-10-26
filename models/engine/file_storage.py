@@ -4,7 +4,7 @@ Contains the FileStorage class
 """
 
 import json
-from models import models
+#from models import models
 from models.amenity import Amenity
 from models.base_model import BaseModel
 from models.city import City
@@ -81,7 +81,7 @@ class FileStorage:
         """
         if cls and id:
             fetch_obj = "{}.{}".format(cls, id)
-            all_obj = models.storage.all(cls)
+            all_obj = self.all(cls)
             return all_obj.get(fetch_obj)
         return None
 
