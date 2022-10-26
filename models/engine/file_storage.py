@@ -78,7 +78,7 @@ class FileStorage:
         id: string representing the object ID
         Returns the obj based on the class and its ID, or None if not found
         """
-         if cls and id:
+        if cls and id:
             fetch_obj = "{}.{}".format(cls, id)
             all_obj = self.all(cls)
             return all_obj.get(fetch_obj)
