@@ -3,7 +3,7 @@
 
 import cmd
 from datetime import datetime
-from models.engine import storage.all()
+from models import models
 from models.amenity import Amenity
 from models.base_model import BaseModel
 from models.city import City
